@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>PARA MI QUERIDA PRINCESA 💖</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Arial', sans-serif;
+      text-align: center;
+      color: #fff;
+      overflow: hidden;
+      background: pink; /* Fondo rosa */
+    }
+    h1 {
+      margin-top: 50px;
+      font-size: 3em;
+      animation: latido 1s infinite;
+      position: relative;
+      z-index: 2;
+    }
+    p {
+      font-size: 1.5em;
+      margin-top: 20px;
+      position: relative;
+      z-index: 2;
+    }
+    @keyframes latido {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.1); }
+      100% { transform: scale(1); }
+    }
+    .tulipanes {
+      margin-top: 40px;
+      width: 200px;
+      cursor: pointer;
+      animation: latido 2s infinite;
+      z-index: 2;
+      position: relative;
+    }
+    /* Corazones flotando */
+    .corazon {
+      position: absolute;
+      font-size: 2em;
+      animation: flotar 10s linear infinite;
+    }
+    @keyframes flotar {
+      0% { transform: translateY(100vh) scale(0.5); opacity: 0; }
+      50% { opacity: 1; }
+      100% { transform: translateY(-10vh) scale(1.2); opacity: 0; }
+    }
+    /* Mensaje flotante */
+    .mensaje {
+      position: fixed;
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: rgba(255, 0, 100, 0.8);
+      color: white;
+      padding: 15px 25px;
+      border-radius: 10px;
+      font-size: 1.2em;
+      display: none;
+      z-index: 3;
+      animation: aparecer 3s ease-in-out;
+    }
+    @keyframes aparecer {
+      0% { opacity: 0; transform: translate(-50%, 50px); }
+      20% { opacity: 1; transform: translate(-50%, 0); }
+      80% { opacity: 1; }
+      100% { opacity: 0; transform: translate(-50%, -50px); }
+    }
+    /* Botón secreto */
+    .secreto {
+      position: fixed;
+      bottom: 10px;
+      right: 10px;
+      background: transparent;
+      border: none;
+      font-size: 1.5em;
+      cursor: pointer;
+      color: #ff0066;
+      z-index: 4;
+    }
+    .mensajeSecreto {
+      position: fixed;
+      bottom: 60px;
+      right: 10px;
+      background: rgba(255, 0, 100, 0.9);
+      color: white;
+      padding: 15px 25px;
+      border-radius: 10px;
+      font-size: 1.2em;
+      display: none;
+      z-index: 4;
+    }
+  </style>
+</head>
+<body>
+  <h1> PARA USTED, LA MUJER MAS HERMOSA Y DIVINA QUE MIS OJOS HAN VISTO  💕</h1>
+  <p>Eres mi inspiración en cada nuevo dia 💖</p>
+
+  <!-- Imagen de tulipanes -->
+  <img src="tulipanes.png" alt="Tulipanes" class="tulipanes">
+
+  <!-- Música de fondo -->
+  <audio id="musica" loop>
+    <source src="Cuerpo a Cuerpo.mp3" type="audio/mpeg">
+  </audio>
+
+  <!-- Mensaje flotante -->
+  <div id="mensaje" class="mensaje">"Cada día que pasa le agradezco a dios. Porque eres mi razón de sonreír, mi paz en los momentos difíciles y mi alegría en los más simples. No necesito estrellas en el cielo, porque tú eres la luz que guía mi camino. Te amo con todo mi corazón."🌷💖✨</div>
+
+  <!-- Botón secreto -->
+<button class="secreto">🔑</button>
+<div id="mensajeSecreto" class="mensajeSecreto">
+  <p><strong>Amor en la distancia</strong></p>
+  <p>Aunque mis ojos no te alcancen,<br>
+  mi corazón te busca sin cesar,<br>
+  eres la voz que en silencio danza,<br>
+  la estrella que me guía al soñar.</p>
+<p>No necesito tocar tu mano,<br>
+  para sentir que estás aquí,<br>
+  pues cada pensamiento temprano<br>
+  me susurra tu nombre a mí.</p>
+<p>La distancia no apaga el fuego,<br>
+  ni el cariño que en mí floreció,<br>
+  porque aunque no te tenga cerca,<br>
+  mi alma contigo siempre vivió.</p>
+ <p>Y cuando el destino nos reúna,<br>
+  será como un amanecer,<br>
+  donde el tiempo y la espera se fundan,<br>
+  y mi abrazo te diga: “al fin, mujer”.</p>
+</div>
+
+  <script>
+    // Generar corazones flotando de diferentes colores
+    const colores = ["red", "deeppink", "purple", "hotpink", "crimson"];
+    function crearCorazon() {
+      const corazon = document.createElement("div");
+      corazon.className = "corazon";
+      corazon.innerHTML = "❤";
+      corazon.style.left = Math.random() * window.innerWidth + "px";
+      corazon.style.color = colores[Math.floor(Math.random() * colores.length)];
+      corazon.style.animationDuration = (Math.random() * 5 + 5) + "s";
+      document.body.appendChild(corazon);
+
+      setTimeout(() => corazon.remove(), 10000);
+    }
+    setInterval(crearCorazon, 500);
+
+    // Música y mensaje al hacer clic en los tulipanes
+    const musica = document.getElementById("musica");
+    const mensaje = document.getElementById("mensaje");
+   document.querySelector(".tulipanes").addEventListener("click", () => {
+  musica.play(); // la música empieza o sigue sonando
+  mensaje.style.display = "block"; // el mensaje aparece
+  mensaje.style.animation = "aparecer 3s ease-in-out"; // se aplica la animación
+  setTimeout(() => { 
+    mensaje.style.display = "none"; // se oculta después de 3 segundos
+  }, 10000);
+});
+
+
+    // Botón secreto
+    const botonSecreto = document.querySelector(".secreto");
+  const mensajeSecreto = document.getElementById("mensajeSecreto");
+  botonSecreto.addEventListener("click", () => {
+    mensajeSecreto.style.display = "block";
+    setTimeout(() => { mensajeSecreto.style.display = "none"; }, 15000); // visible 15 segundos
+  });
+</script>
+</body>
+</html>
